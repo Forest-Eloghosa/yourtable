@@ -16,12 +16,15 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 import os
 try:
-    from dotenv import load_dotenv
-    _DOTENV_AVAILABLE = True
+    # Import python-dotenv dynamically to avoid static import errors in editors
+    import importlib
+    dotenv = importlib.import_module("dotenv")
+    load_dotenv = getattr(dotenv, "load_dotenv")
+    _DOTENV_AVAILABLE = callable(load_dotenv)
 except Exception:
     _DOTENV_AVAILABLE = False
 
-# If python-dotenv is installed, load the .env file at project root for local development
+# If python-dotenv is available, load the .env file at project root for local development
 if _DOTENV_AVAILABLE:
     load_dotenv(BASE_DIR / '.env')
 

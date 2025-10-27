@@ -1,0 +1,14 @@
+db.sqlite3
+/media/
+/menu_images/
+.env
+.vscode/
+.idea/
+pycache/
+*.py[cod]
+*.sqlite3
+*.log
+.pytest_cache/
+env/
+.venv/
+*.sqlite3-journal

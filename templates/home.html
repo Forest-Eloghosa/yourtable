@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}Home | YourTable{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to YourTable</h1>
+    <p>Reserve your seat, explore the menu, and enjoy a seamless dining experience.</p>
+    <a href="{% url 'bookings:booking_list' %}" class="btn btn-primary mt-3">Book a Table</a>
+</section>
+{% endblock %}
+

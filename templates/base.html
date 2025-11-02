@@ -1,0 +1,61 @@
+{% load static %}
+
+{% url 'home' as home_url %}
+
+{% url 'menu:menu_list' as menu_url %}
+{% url 'bookings:booking_list' as bookings_url %}
+{% url 'reviews:review_list' as reviews_url %}
+{% url 'account_login' as login_url %}
+{% url 'account_signup' as signup_url %}
+{% url 'account_logout' as logout_url %}
+
+<!DOCTYPE html>
+<html class="h-100" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}YourTable{% endblock %}</title>
+
+    <!-- Favicon -->
+    <link rel="apple-touch-icon" sizes="180x180" href="{% static 'favicon/apple-touch-icon.png' %}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'favicon/favicon-32x32.png' %}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'favicon/favicon-16x16.png' %}">
+    
+    <!-- Shortcut favicon (fallback) -->
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}">
+
+    <!-- Font Awesome CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+</head>
+
+<body class="d-flex flex-column h-100 main-bg">
+
+    <!-- Navbar -->
+    {% include 'navbar.html' %}
+
+    <main class="container mt-5 mb-5 flex-shrink-0 main-bg">
+    {% if user.is_authenticated %}
+    <p class="text-end m-3">You are logged in as {{ user }}</p>
+    {% else %}
+    <p class="text-end m-3">You are not logged in</p>
+    {% endif %} 
+        {% block content %}
+            <!-- Page-specific content goes here -->
+        {% endblock %}
+    </main>
+
+    {% include 'footer.html' %}
+
+    <!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+</html>

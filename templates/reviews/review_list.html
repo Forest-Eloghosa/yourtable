@@ -6,7 +6,7 @@
   {% if user.is_authenticated %}
     <a class="btn btn-primary mb-3" href="{% url 'reviews:review_create' %}">Leave a review</a>
   {% else %}
-    <p><a href="{% url 'login' %}">Log in</a> to leave a review.</p>
+    <p><a href="{% url 'account_login' %}">Log in</a> to leave a review.</p>
   {% endif %}
 
   {% for r in reviews %}

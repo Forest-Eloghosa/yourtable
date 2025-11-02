@@ -1,0 +1,1 @@
+web: gunicorn yourtable.wsgi

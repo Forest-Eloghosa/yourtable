@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block title %}Add / Edit Menu Item{% endblock %}
+{% block content %}
+<div class="menu-container">
+  <h1>Add or Edit Menu Item</h1>
+
+  <form method="post">
+    {% csrf_token %}
+    <!-- Placeholder form fields -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Dish Name</label>
+      <input type="text" id="name" name="name" class="form-control" required>
+    </div>
+
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea id="description" name="description" class="form-control" rows="3" required></textarea>
+    </div>
+
+    <div class="mb-3">
+      <label for="price" class="form-label">Price (€)</label>
+      <input type="number" id="price" name="price" class="form-control" step="0.01" required>
+    </div>
+
+    <button type="submit" class="btn btn-custom">Save</button>
+  </form>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}Menu{% endblock %}
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'menu/css/menu.css' %}">
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+<div class="menu-container">
+  <h1 class="text-center mb-4">Our Menu</h1>
+
+  {% for category in categories %}
+    <section aria-labelledby="category-{{ category.slug }}">
+      <h2 id="category-{{ category.slug }}" class="menu-category">{{ category.name }}</h2>
+      <div class="menu-grid">
+        {% for item in category.items.all %}
+          <article class="menu-item">
+            <h3>{{ item.name }}</h3>
+            {% if item.image %}
+              <figure class="menu-item-figure">
+                <img src="{{ item.image.url }}" alt="{{ item.name }}" loading="lazy">
+              </figure>
+            {% endif %}
+            <p>{{ item.description }}</p>
+            <p class="price">€{{ item.price }}</p>
+            <a href="{{ item.get_absolute_url }}" class="btn btn-custom mt-2" aria-label="View details for {{ item.name }}">View Details</a>
+          </article>
+        {% empty %}
+          <p>No items yet in this category.</p>
+        {% endfor %}
+      </div>
+    </section>
+  {% empty %}
+    <p>No menu categories available.</p>
+  {% endfor %}
+
+</div>
+{% endblock %}

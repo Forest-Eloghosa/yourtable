@@ -1,8 +1,9 @@
 from django.urls import path
-from django.views.generic import TemplateView
+from . import views
 
 app_name = 'menu'
 
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='menu/menu_list.html'), name='menu_list'),
+    path('', views.MenuListView.as_view(), name='menu_list'),
+    path('<slug:slug>/', views.MenuItemDetailView.as_view(), name='menu_item_detail'),
 ]

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+  <h1>Your profile</h1>
+  <p>This is a minimal profile page.</p>
+  {% if user.is_authenticated %}
+    <div class="profile-block">
+      {% comment %} Show user profile image if available (Profile model may be added) {% endcomment %}
+      {% if user.profile.image.url %}
+        <img src="{{ user.profile.image.url }}" alt="{{ user.username }}'s profile" style="max-width:160px; display:block; margin-bottom:8px;"/>
+      {% else %}
+        <img src="{% static 'users/images/profile-placeholder.svg' %}" alt="Profile placeholder" style="max-width:160px; display:block; margin-bottom:8px;"/>
+      {% endif %}
+      <ul>
+        <li>Username: {{ user.username }}</li>
+        <li>Email: {{ user.email }}</li>
+      </ul>
+      <p><a href="{% url 'users:signup' %}">Create another account</a></p>
+    </div>
+  {% else %}
+    <p>You are not logged in. <a href="{% url 'account_login' %}">Log in</a> or <a href="{% url 'users:signup' %}">Sign up</a>.</p>
+  {% endif %}
+{% endblock %}

@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}Menu Item Details{% endblock %}
 {% block content %}
 <div class="menu-container">
-  <h1>Bruschetta</h1>
-  <p><strong>Category:</strong> Starters</p>
-  <p>Fresh tomatoes, basil, and olive oil on toasted bread.</p>
-  <p><strong>Price:</strong> €6.50</p>
+  <h1>{{ object.name }}</h1>
+  <p><strong>Category:</strong> {{ object.category.name }}</p>
+  {% if object.image %}
+    <img src="{{ object.image.url }}" alt="{{ object.name }}" class="menu-detail-img">
+  {% else %}
+    <img src="{% static 'menu/images/placeholder-food.svg' %}" alt="No image" class="menu-detail-img">
+  {% endif %}
+  <p>{{ object.description }}</p>
+  <p><strong>Price:</strong> €{{ object.price }}</p>
   <a href="{% url 'menu:menu_list' %}" class="btn btn-custom mt-3">Back to Menu</a>
 </div>
 {% endblock %}

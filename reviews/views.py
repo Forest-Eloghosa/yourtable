@@ -14,7 +14,7 @@ class ReviewListView(ListView):
 
 class ReviewCreateView(LoginRequiredMixin, CreateView):
 	model = Review
-	fields = ['rating', 'comment']
+	fields = ['rating', 'comment', 'image']
 	template_name = 'reviews/review_form.html'
 	success_url = reverse_lazy('reviews:review_list')
 

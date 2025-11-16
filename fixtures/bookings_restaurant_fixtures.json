@@ -1,0 +1,104 @@
+[
+  {
+    "model": "auth.user",
+    "pk": 1,
+    "fields": {
+      "password": "",
+      "last_login": null,
+      "is_superuser": false,
+      "username": "fixtureuser",
+      "first_name": "Fixture",
+      "last_name": "User",
+      "email": "fixture@example.com",
+      "is_staff": false,
+      "is_active": true,
+      "date_joined": "2025-01-01T00:00:00Z"
+    }
+  },
+  {
+    "model": "menu.restaurant",
+    "pk": 1,
+    "fields": {
+      "name": "Main Branch",
+      "slug": "main-branch",
+      "description": "Our flagship location.",
+      "address": "123 Main St, Hometown",
+      "phone": "555-0100",
+      "website": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "menu.restaurant",
+    "pk": 2,
+    "fields": {
+      "name": "Riverside",
+      "slug": "riverside",
+      "description": "Scenic riverside seating.",
+      "address": "45 River Rd",
+      "phone": "555-0101",
+      "website": "",
+      "image": ""
+    }
+  },
+  {
+    "model": "bookings.table",
+    "pk": 1,
+    "fields": {
+      "restaurant": 1,
+      "number": 1,
+      "capacity": 2
+    }
+  },
+  {
+    "model": "bookings.table",
+    "pk": 2,
+    "fields": {
+      "restaurant": 1,
+      "number": 2,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "bookings.table",
+    "pk": 3,
+    "fields": {
+      "restaurant": 1,
+      "number": 3,
+      "capacity": 6
+    }
+  },
+  {
+    "model": "bookings.table",
+    "pk": 4,
+    "fields": {
+      "restaurant": 2,
+      "number": 1,
+      "capacity": 4
+    }
+  },
+  {
+    "model": "bookings.booking",
+    "pk": 1,
+    "fields": {
+      "user": 1,
+      "restaurant": 1,
+      "date": "2025-12-01T18:00:00Z",
+      "guests": 4,
+      "special_requests": "Window seat, please",
+      "created_at": "2025-10-28T10:00:00Z"
+    }
+  },
+  {
+    "model": "bookings.booking",
+    "pk": 2,
+    "fields": {
+      "user": 1,
+      "restaurant": 1,
+      "date": "2025-12-02T19:00:00Z",
+      "guests": 2,
+      "special_requests": "Allergic to nuts",
+      "created_at": "2025-10-28T10:05:00Z"
+    }
+  }
+]
